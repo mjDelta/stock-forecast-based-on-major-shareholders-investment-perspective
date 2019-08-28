@@ -58,11 +58,11 @@ model.eval()
 # code_embeddings=model.code_emb_layer.weight.detach().cpu().numpy()
 # code_decomposition=TSNE(n_components=2).fit_transform(code_embeddings)
 owner_embeddings=model.owner_emb_layer.weight.detach().cpu().numpy()
-owner_decomposition=TSNE(n_components=2).fit_transform(owner_embeddings)[:300]
+owner_decomposition=TSNE(n_components=2).fit_transform(owner_embeddings)
 owner_dict={}
 for o,i in owner_dict_.items():
-	if i<300:
-		owner_dict[o]=i
+
+	owner_dict[o]=i
 owner_labels=np.zeros(shape=(len(owner_dict),))##按个体投资者的机构投资者划分
 for o,i in owner_dict.items():
 	if len(o)>4:
@@ -93,19 +93,19 @@ for o,i in owner_dict.items():
 # plt.legend(["Blue: individual","Red: company"])
 plt.xticks(fontsize=20)
 plt.yticks(fontsize=20)
-plt.savefig(os.path.join(model_dir,"owner_cluster_300_0731.png"),bbox_inches = 'tight')
+plt.savefig(os.path.join(model_dir,"owner_cluster.png"),bbox_inches = 'tight')
 
 owner_clusters=pd.DataFrame()
 owner_clusters["CLUSTER 0"]=clusters[0]
-owner_clusters.to_csv(os.path.join(model_dir,"owners_clusters0_300_0731.csv"),index=False)
+owner_clusters.to_csv(os.path.join(model_dir,"owners_clusters0.csv"),index=False)
 
 owner_clusters=pd.DataFrame()
 owner_clusters["CLUSTER 1"]=clusters[1]
-owner_clusters.to_csv(os.path.join(model_dir,"owners_clusters1_300_0731.csv"),index=False)
+owner_clusters.to_csv(os.path.join(model_dir,"owners_clusters1.csv"),index=False)
 
 owner_clusters=pd.DataFrame()
 owner_clusters["CLUSTER 2"]=clusters[2]
-owner_clusters.to_csv(os.path.join(model_dir,"owners_clusters2_300_0731.csv"),index=False)
+owner_clusters.to_csv(os.path.join(model_dir,"owners_clusters2.csv"),index=False)
 
 
 reverse_owner_dict={}
@@ -157,7 +157,7 @@ for key in range(3):
 			link_dict["value"]=key+3
 			out_dict["links"].append(link_dict)			
 
-with open(os.path.join(model_dir,"owners_300_0731.json"),"w") as f:
+with open(os.path.join(model_dir,"owners.json"),"w") as f:
 	f.write(json.dumps(out_dict,ensure_ascii=False))
 
 
