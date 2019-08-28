@@ -5,5 +5,6 @@ This repository focused on predicting the stock trend in China based on major sh
 - [x] Embedding [词嵌入]
 - [x] Deep learning [深度学习]
 - [ ] Graph Convolution [图卷积]
-
+![](https://github.com/mjDelta/stock-forecast-based-on-major-shareholders-investment-perspective/blob/master/pics/structure.png)
 ## Results [结果]
+![](https://github.com/mjDelta/stock-forecast-based-on-major-shareholders-investment-perspective/blob/master/pics/results.png)
